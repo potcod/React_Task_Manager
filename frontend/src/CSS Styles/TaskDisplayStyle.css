@@ -1,0 +1,10 @@
+.taskInfo {
+    font-weight: normal;
+}
+.taskEditImage{
+    /* width: 20px;  */
+    height: 30px; /* Set the desired height */
+}
+.taskMapDisplayCOntainer {
+    overflow: auto;
+}

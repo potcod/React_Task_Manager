@@ -1,0 +1,8 @@
+com\example\demo\Task\TaskController.class
+com\example\demo\WebSocketConfig.class
+com\example\demo\Task\TaskRepository.class
+com\example\demo\Task\Task.class
+com\example\demo\Application.class
+com\example\demo\Task\CorsConfig$1.class
+com\example\demo\Task\TaskService.class
+com\example\demo\Task\CorsConfig.class

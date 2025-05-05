@@ -1,0 +1,35 @@
+.fixed {
+    position: fixed;
+}
+
+.inset-0 {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.z-50 {
+    z-index: 50; 
+}
+
+.bg-gray-500 {
+    background-color: rgba(107, 114, 128, 1); 
+}
+
+.bg-opacity-50 {
+    background-color: rgba(107, 114, 128, 0.5); /* 50% opacity */
+}
+.justify-center {
+    display: flex;
+    justify-content: center;
+}
+
+.dialog-panel {
+    height: auto;
+    max-height: 90vh; /* Prevent it from exceeding the viewport height */
+} 
+.flex {
+    align-items: center; /* Vertically center the modal */
+    justify-content: center; /* Horizontally center the modal */
+}
