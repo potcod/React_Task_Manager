@@ -46,6 +46,7 @@ const EditTaskModal = ({ isEditOpen, setIsEditOpen, selectedTask, setSelectedTas
 
 }
 const AddTaskModal = ({ isAddOpen, setIsAddOpen, addTask, handleAddChange, onKeyDown, categoryClick }) => {
+   
     return (
         <Dialog open={isAddOpen} onClose={() => setIsAddOpen(false)} className="relative z-50">
             <div className="fixed inset-0 flex w-screen items-center justify-center p-4 bg-gray-500 bg-opacity-50">
@@ -59,7 +60,7 @@ const AddTaskModal = ({ isAddOpen, setIsAddOpen, addTask, handleAddChange, onKey
                     <input type="text" name="description" onChange={handleAddChange} onkeydown={onKeyDown} placeholder="Description" className="border p-2 w-full" />
                     {/* <input type="text" name="category" onChange={handleAddChange} onKeyDown={onKeyDown} placeholder="Category" className="border p-2 w-full" /> */}
 
-                    <select name="category" onKeyDown={onKeyDown} onChange={(event) => {handleAddChange(event); categoryClick(event)}} className="border p-2 w-full">
+                    <select name="category"  defaultValue ="Uncategorized" onKeyDown={onKeyDown} onChange={(event) => {handleAddChange(event)}} className="border p-2 w-full">
                         <option value="Gym" >Gym</option>
                         <option value="Uncategorized" >Uncategorized</option>
                         <option value="Learning" >Learning</option>
