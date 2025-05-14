@@ -116,7 +116,9 @@ const App = () => {
     }).then(res => { return res })
       .then(data => {
         console.log("Success")
+        grabTasks()
       })
+      
   }
 
 

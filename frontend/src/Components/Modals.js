@@ -36,7 +36,7 @@ const EditTaskModal = ({ isEditOpen, setIsEditOpen, selectedTask, setSelectedTas
                     <div className="flex justify-end gap-4">
                         <button onClick={() => setIsEditOpen(false)} className="px-4 py-2 border rounded">Cancel</button>
                         <button onClick={() => { setIsEditOpen(false); saveEditedTask(selectedTask.id, selectedTask) }} className="px-4 py-2 bg-blue-500 ">Save</button>
-                        <button onClick={() => deleteFromModal(selectedTask)} className="px-4 py-2 bg-blue-500 ">Delete</button>
+                        <button onClick={() => {deleteFromModal(selectedTask); setIsEditOpen(false)}} className="px-4 py-2 bg-blue-500 ">Delete</button>
                     </div>
                 </DialogPanel>
             </div>
