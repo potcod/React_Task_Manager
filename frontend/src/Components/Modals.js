@@ -45,10 +45,11 @@ const EditTaskModal = ({ isEditOpen, setIsEditOpen, selectedTask, setSelectedTas
     )
 
 }
-const AddTaskModal = ({ isAddOpen, setIsAddOpen, addTask, handleAddChange, onKeyDown, categoryClick }) => {
+const AddTaskModal = ({ isAddOpen, setIsAddOpen, addTask, handleAddChange, onKeyDown, categoryClick, handleCloseAddModal }) => {
+    
    
     return (
-        <Dialog open={isAddOpen} onClose={() => setIsAddOpen(false)} className="relative z-50">
+        <Dialog open={isAddOpen} onClose={() => handleCloseAddModal()} className="relative z-50">
             <div className="fixed inset-0 flex w-screen items-center justify-center p-4 bg-gray-500 bg-opacity-50">
             <DialogPanel className="max-w-lg space-y-4 border bg-white p-6 rounded-md">
             <DialogTitle className="font-bold">Adding Task</DialogTitle>
@@ -56,17 +57,17 @@ const AddTaskModal = ({ isAddOpen, setIsAddOpen, addTask, handleAddChange, onKey
                     <div className="addHead">
                         <p>Name</p> <p>Description</p>
                     </div>
-                    <input type="text" name="name" onChange={handleAddChange} onkeydown={onKeyDown} placeholder="Task Name" className="border p-2 w-full" />
-                    <input type="text" name="description" onChange={handleAddChange} onkeydown={onKeyDown} placeholder="Description" className="border p-2 w-full" />
+                    <input type="text" name="name" onChange={handleAddChange} onKeyDown={onKeyDown} placeholder="Task Name" className="border p-2 w-full" />
+                    <input type="text" name="description" onChange={handleAddChange} onKeyDown={onKeyDown} placeholder="Description" className="border p-2 w-full" />
                     {/* <input type="text" name="category" onChange={handleAddChange} onKeyDown={onKeyDown} placeholder="Category" className="border p-2 w-full" /> */}
 
-                    <select name="category"  defaultValue ="Uncategorized" onKeyDown={onKeyDown} onChange={(event) => {handleAddChange(event)}} className="border p-2 w-full">
-                        <option value="Gym" >Gym</option>
+                    <select name="category" defaultValue ="Uncategorizrd" onKeyDown={onKeyDown} onChange={(event) => {handleAddChange(event)}} className="border p-2 w-full">
                         <option value="Uncategorized" >Uncategorized</option>
+                        <option value="Gym" >Gym</option>
                         <option value="Learning" >Learning</option>
                     </select>
                     <div className="flex justify-end gap-4">
-                        <button onClick={() => setIsAddOpen(false)} className="px-4 py-2 border rounded">Cancel</button>
+                        <button onClick={() => handleCloseAddModal()} className="px-4 py-2 border rounded">Cancel</button>
                         <button onClick={() => { setIsAddOpen(false); addTask() }} className="px-4 py-2 bg-blue-500 ">Add</button>
 
                     </div>

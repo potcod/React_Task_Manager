@@ -8,3 +8,6 @@
 .taskMapDisplayCOntainer {
     overflow: auto;
 }
+.noTaskElem {
+    font-weight: normal;
+}

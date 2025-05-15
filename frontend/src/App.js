@@ -110,6 +110,18 @@ const App = () => {
     console.log("Opening Add Modal")
     setIsAddOpen(true)
   }
+  function handleCloseAddModal() {
+    console.log("Closing Add Modal")
+    setAddField({
+      name: '',
+      description: '',
+      completion: '',
+      category: 'Uncategorized',
+    })
+    console.log(addField)
+    setIsAddOpen(false);
+
+  }
   function deleteFromModal(task) {
     fetch(`http://localhost:8080/home/${task.id}`, {
       method: "DELETE"
@@ -124,7 +136,7 @@ const App = () => {
 
   //Handle textbox changes
   const handleEditChange = (event) => {
-    console.log("TEST")
+    
     setEditField({
       ...editField, [event.target.name]: event.target.value
     })
@@ -141,7 +153,7 @@ const App = () => {
 
 
   function onKeyDown(e) {
-    console.log("Key down");
+    // console.log("Key down");
 
     if (e.key === "Enter") {
       console.log("Enter key down");
@@ -188,25 +200,27 @@ const App = () => {
 
   function addTask() {
     console.log("User attempting to add task")
-    const newTask = {
-      name: addField.name,
-      description: addField.description,
-      category: addField.category,
-    }
-    fetch(`http://localhost:8080/home`, {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newTask)
-    }).then(res => { return res })
-      .then(data => {
-        console.log("Success")
-        grabTasks()
-      }).catch(error => {
-        console.log(error)
-      })
+    if(tasks.some(task => task.name === addField.name)){
+      console.log("Task already exists")
+      alert("Task already exists")
+      return
+    } else {
+      console.log("Task does not exist, adding task");
       
+      fetch(`http://localhost:8080/home`, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(addField)
+      }).then(res => { return res })
+        .then(data => {
+          console.log("Success")
+          grabTasks()
+        }).catch(error => {
+          console.log(error)
+        })
+    }
   }
 
   //BODY
@@ -218,7 +232,7 @@ const App = () => {
 
           <h2> Task List
             <button onClick={() => openAddModal()}> Add Task</button>
-            <AddTaskModal isAddOpen={isAddOpen} setIsAddOpen={setIsAddOpen} addTask={addTask} handleAddChange={handleAddChange} onkeyDown={onKeyDown}></AddTaskModal>
+            <AddTaskModal isAddOpen={isAddOpen} setIsAddOpen={setIsAddOpen} addTask={addTask} handleAddChange={handleAddChange} onkeyDown={onKeyDown} handleCloseAddModal={handleCloseAddModal}></AddTaskModal>
             <TaskMapDisplay
               tasks={tasks}
               changeCompletion={changeCompletion}

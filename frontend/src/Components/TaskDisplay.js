@@ -86,7 +86,7 @@ const TaskMapDisplay = ({ tasks, changeCompletion, openEditModal,
                         ))
 
                     ) : (
-                        <p className="text-gray-500">No tasks in this category.</p>
+                        <p className="noTaskElem">No tasks in this category.</p>
                     )
                     }
 

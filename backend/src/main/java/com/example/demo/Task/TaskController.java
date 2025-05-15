@@ -30,6 +30,7 @@ public class TaskController {
 
     @PostMapping
     public void createTask(@RequestBody Task task){
+        System.out.println("TAG" + task);
         taskService.addTask(task);
     }
 
